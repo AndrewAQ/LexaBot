@@ -1,11 +1,19 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
-client.on('ready', () => {
-    console.log('I am ready!');
+var Discord = require('discord.js');
+var logger = require('winston');
+// Configure logger settings
+logger.remove(logger.transports.Console);
+logger.add(logger.transports.Console, {
+    colorize: true
 });
-
-client.on('message', function (user, userID, channelID, message, evt) {
+logger.level = 'debug';
+// Initialize Discord Bot
+var bot = new Discord.Client();
+bot.on('ready', function (evt) {
+    logger.info('Connected');
+    logger.info('Logged in as: ');
+    logger.info(bot.username + ' - (' + bot.id + ')');
+});
+bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
@@ -16,7 +24,7 @@ client.on('message', function (user, userID, channelID, message, evt) {
         switch(cmd) {
             // !ping
             case 'ping':
-                client.sendMessage({
+                bot.sendMessage({
                     to: channelID,
                     message: 'Pong!'
                 });
@@ -25,6 +33,5 @@ client.on('message', function (user, userID, channelID, message, evt) {
          }
      }
 });
-
 // THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
