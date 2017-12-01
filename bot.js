@@ -7,7 +7,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.substring(0, 2) == ‘леха’){
-      message.sendMessage('САСИ');
+      message.reply('САСИ');
     }
 });
 
