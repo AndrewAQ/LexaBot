@@ -6,7 +6,9 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.substring(0, 2) == ‘леха’)
+    if (message.substring(0, 2) == ‘леха’){
+      message.sendMessage('САСИ');
+    }
 });
 
 // THIS  MUST  BE  THIS  WAY
