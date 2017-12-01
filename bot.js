@@ -6,9 +6,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.reply('pong');
-  	}
+    if (message.substring(0, 2) == ‘леха’)
 });
 
 // THIS  MUST  BE  THIS  WAY
