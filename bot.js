@@ -6,8 +6,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.substring(0, 2) == ‘леха’){
-      message.reply('САСИ');
+    if (message.substring(0, 2) == 'lexa'){
+      message.reply('саси');
     }
 });
 
